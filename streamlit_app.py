@@ -47,12 +47,22 @@ def main():
     top_hashtags = hashtag_counts.head(top_hashtags_range)
 
     # Color selection
-    st.write("Select color for the plot:")
-    selected_color = st.color_picker('Pick a color', '#808080')  # Default color: grey
+    color_options = {
+        'Persimmon': '#FF5733', 'Malachite': '#33FF57', 'Ultramarine Blue': '#3357FF', 
+        'Neon Pink': '#FF33A1', 'Electric Violet': '#A133FF', 'Medium Aquamarine': '#33FFA1', 
+        'Gold': '#FFD700', 'Blue Violet': '#8A2BE2', 'Dark Turquoise': '#00CED1', 
+        'Orange Red': '#FF4500', 'Goldenrod': '#DAA520', 'Indigo': '#4B0082', 
+        'Tomato': '#FF6347', 'Turquoise': '#40E0D0', 'Deep Pink': '#FF1493', 
+        'Chartreuse': '#7FFF00', 'Hot Pink': '#FF69B4', 'Medium Spring Green': '#00FA9A', 
+        'Dodger Blue': '#1E90FF', 'Coral': '#FF7F50'
+    }
+    selected_color_name = st.selectbox('Select color for the plot', list(color_options.keys()))
+    selected_color = color_options[selected_color_name]
 
     create_bar_plot(top_hashtags, f'Top {top_hashtags_range} most common hashtags', color=selected_color)
 
 if __name__ == "__main__":
     main()
+
 
 
