@@ -22,7 +22,6 @@ def create_bar_plot(hashtag_counts, title, color='darkgrey'):
 
 # Streamlit app
 def main():
-    st.balloons()
     st.markdown("# Hashtag Analyzer")
 
     st.write("Welcome to the Hashtag Analyzer app! 🚀 " 
