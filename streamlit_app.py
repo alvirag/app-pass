@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,16 +9,6 @@ def extract_hashtags(text, case_sensitive=True):
     if not case_sensitive:
         text = text.lower()
     return re.findall(regex_pattern, text)
-
-# Function to create bar plot of top hashtags
-def create_bar_plot(hashtag_counts, title):
-    plt.figure(figsize=(10, 6))
-    hashtag_counts.plot(kind='bar', color='darkgrey')
-    plt.title(title)
-    plt.xlabel('# Hashtag')
-    plt.ylabel('Count')
-    plt.xticks(rotation=45)
-    st.pyplot()
 
 # Streamlit app
 def main():
@@ -48,9 +37,17 @@ def main():
     top_hashtags_range = st.slider('Select range for top hashtags', 5, 20, 10)
     top_hashtags = hashtag_counts.head(top_hashtags_range)
 
-    create_bar_plot(top_hashtags, f'Top {top_hashtags_range} most common hashtags')
+    # Create bar plot
+    fig, ax = plt.subplots(figsize=(10, 6))
+    top_hashtags.plot(kind='bar', color='darkgrey', ax=ax)
+    ax.set_title(f'Top {top_hashtags_range} most common hashtags')
+    ax.set_xlabel('# Hashtag')
+    ax.set_ylabel('Count')
+    ax.tick_params(axis='x', rotation=45)
+    
+    # Show plot in Streamlit app
+    st.pyplot(fig)
 
 if __name__ == "__main__":
     main()
-
 
