@@ -39,8 +39,6 @@ def main():
     file_path = selected_file
     tweets = pd.read_csv(file_path)
 
-    tweets['created_at'] = pd.to_datetime(tweets['created_at'], format='%m/%d/%Y %H:%M')
-
     tweets['hashtags'] = tweets['text'].apply(lambda x: extract_hashtags(x, case_sensitive))
 
     hashtags_list = [item for sublist in tweets['hashtags'] for item in sublist]
