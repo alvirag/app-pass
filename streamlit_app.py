@@ -22,6 +22,7 @@ def create_bar_plot(hashtag_counts, title, color='darkgrey'):
 
 # Streamlit app
 def main():
+    st.balloons()
     st.markdown("# Hashtag Analyzer")
 
     st.write("Welcome to the Hashtag Analyzer app! 🚀 " 
@@ -47,8 +48,8 @@ def main():
     top_hashtags = hashtag_counts.head(top_hashtags_range)
 
     # Color selection
-    color_options = ['darkgrey', 'blue', 'green', 'red', 'purple']  # Add more colors as needed
-    selected_color = st.selectbox('Select color for the plot', color_options)
+    st.write("Select color for the plot:")
+    selected_color = st.color_picker('Pick a color', '#808080')  # Default color: grey
 
     create_bar_plot(top_hashtags, f'Top {top_hashtags_range} most common hashtags', color=selected_color)
 
