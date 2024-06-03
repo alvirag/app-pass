@@ -13,11 +13,10 @@ def extract_hashtags(text, case_sensitive=True):
 # Function to create bar plot of top hashtags
 def create_bar_plot(hashtag_counts, title, color='darkgrey'):
     fig, ax = plt.subplots(figsize=(10, 6))
-    hashtag_counts.plot(kind='bar', color=color, ax=ax)
+    hashtag_counts.plot(kind='barh', color=color, ax=ax)  # 'barh' for horizontal bar plot
     ax.set_title(title)
-    ax.set_xlabel('# Hashtag')
-    ax.set_ylabel('Count')
-    ax.tick_params(axis='x', rotation=45)
+    ax.set_xlabel('Count')
+    ax.set_ylabel('Hashtags')
     st.pyplot(fig)
 
 # Streamlit app
@@ -66,6 +65,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
