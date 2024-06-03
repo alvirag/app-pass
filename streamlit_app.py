@@ -17,6 +17,7 @@ def create_bar_plot(hashtag_counts, title, color='darkgrey'):
     ax.set_title(title)
     ax.set_xlabel('Count')
     ax.set_ylabel('Hashtags')
+    ax.invert_yaxis()  # Invert the y-axis to have the highest count at the top
     st.pyplot(fig)
 
 # Streamlit app
@@ -65,9 +66,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
