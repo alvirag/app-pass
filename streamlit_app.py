@@ -1,6 +1,3 @@
-
-'#FF5733','#33FF57','#3357FF','#FF33A1','#A133FF','#33FFA1','#FFD700','#8A2BE2','#00CED1','#FF4500','#DAA520','#4B0082','#FF6347','#40E0D0','#FF1493','#7FFF00','#FF69B4','#00FA9A','#1E90FF','#FF7F50'
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
