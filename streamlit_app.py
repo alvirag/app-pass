@@ -10,6 +10,16 @@ def extract_hashtags(text, case_sensitive=True):
         text = text.lower()
     return re.findall(regex_pattern, text)
 
+# Function to create bar plot of top hashtags
+def create_bar_plot(hashtag_counts, title, color='darkgrey'):
+    fig, ax = plt.subplots(figsize=(10, 6))
+    hashtag_counts.plot(kind='bar', color=color, ax=ax)
+    ax.set_title(title)
+    ax.set_xlabel('# Hashtag')
+    ax.set_ylabel('Count')
+    ax.tick_params(axis='x', rotation=45)
+    st.pyplot(fig)
+
 # Streamlit app
 def main():
     st.markdown("# Hashtag Analyzer")
@@ -36,17 +46,13 @@ def main():
     top_hashtags_range = st.slider('Select range for top hashtags', 5, 20, 10)
     top_hashtags = hashtag_counts.head(top_hashtags_range)
 
-    # Create bar plot
-    fig, ax = plt.subplots(figsize=(10, 6))
-    top_hashtags.plot(kind='bar', color='darkgrey', ax=ax)
-    ax.set_title(f'Top {top_hashtags_range} most common hashtags')
-    ax.set_xlabel('# Hashtag')
-    ax.set_ylabel('Count')
-    ax.tick_params(axis='x', rotation=45)
-    
-    # Show plot in Streamlit app
-    st.pyplot(fig)
+    # Color selection
+    color_options = ['darkgrey', 'blue', 'green', 'red', 'purple']  # Add more colors as needed
+    selected_color = st.selectbox('Select color for the plot', color_options)
+
+    create_bar_plot(top_hashtags, f'Top {top_hashtags_range} most common hashtags', color=selected_color)
 
 if __name__ == "__main__":
     main()
+
 
