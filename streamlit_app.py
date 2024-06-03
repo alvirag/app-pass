@@ -36,8 +36,7 @@ def main():
 
     case_sensitive = st.checkbox('Consider letter case')
 
-    basedir = "/v/courses/dataexp2024.public/Datasets/D-NLP/"
-    file_path = basedir + selected_file
+    file_path = selected_file
     tweets = pd.read_csv(file_path)
 
     tweets['created_at'] = pd.to_datetime(tweets['created_at'], format='%m/%d/%Y %H:%M')
