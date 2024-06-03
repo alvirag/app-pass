@@ -12,7 +12,6 @@ def extract_hashtags(text, case_sensitive=True):
 
 # Streamlit app
 def main():
-    st.balloons()
     st.markdown("# Hashtag Analyzer")
 
     st.write("Welcome to the Hashtag Analyzer app! 🚀 " 
