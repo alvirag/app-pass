@@ -1,3 +1,6 @@
+
+'#FF5733','#33FF57','#3357FF','#FF33A1','#A133FF','#33FFA1','#FFD700','#8A2BE2','#00CED1','#FF4500','#DAA520','#4B0082','#FF6347','#40E0D0','#FF1493','#7FFF00','#FF69B4','#00FA9A','#1E90FF','#FF7F50'
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -47,22 +50,14 @@ def main():
     top_hashtags = hashtag_counts.head(top_hashtags_range)
 
     # Color selection
-    color_options = {
-        'Persimmon': '#FF5733', 'Malachite': '#33FF57', 'Ultramarine Blue': '#3357FF', 
-        'Neon Pink': '#FF33A1', 'Electric Violet': '#A133FF', 'Medium Aquamarine': '#33FFA1', 
-        'Gold': '#FFD700', 'Blue Violet': '#8A2BE2', 'Dark Turquoise': '#00CED1', 
-        'Orange Red': '#FF4500', 'Goldenrod': '#DAA520', 'Indigo': '#4B0082', 
-        'Tomato': '#FF6347', 'Turquoise': '#40E0D0', 'Deep Pink': '#FF1493', 
-        'Chartreuse': '#7FFF00', 'Hot Pink': '#FF69B4', 'Medium Spring Green': '#00FA9A', 
-        'Dodger Blue': '#1E90FF', 'Coral': '#FF7F50'
-    }
-    selected_color_name = st.selectbox('Select color for the plot', list(color_options.keys()))
-    selected_color = color_options[selected_color_name]
+    st.write("Select color for the plot:")
+    selected_color = st.color_picker('Pick a color', '#808080','#FF5733','#33FF57','#3357FF','#FF33A1','#A133FF','#33FFA1','#FFD700','#8A2BE2','#00CED1','#FF4500','#DAA520','#4B0082','#FF6347','#40E0D0','#FF1493','#7FFF00','#FF69B4','#00FA9A','#1E90FF','#FF7F50')  # Default color: grey
 
     create_bar_plot(top_hashtags, f'Top {top_hashtags_range} most common hashtags', color=selected_color)
 
 if __name__ == "__main__":
     main()
+
 
 
 
